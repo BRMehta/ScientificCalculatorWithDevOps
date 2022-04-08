@@ -21,6 +21,10 @@ public class Calculator {
         logger.info("Factorial of the number : " + var + "\n Result is : " + fact);
         return fact;
     }
+    public double logarithm(double var){
+        logger.info("Calculating Natural Logarithm of : " + var + "\n Result : " + Math.log(var));
+        return Math.log(var);
+    }
     public static void main(String[] args){
         Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
@@ -32,6 +36,8 @@ public class Calculator {
             System.out.println("-----Calculator-----");
             System.out.println("Press 1 to find square root");
             System.out.println("Press 2 to find factorial");
+            System.out.println("Press 3 to find natural logarithm");
+            System.out.println("Press 4 to find power");
             System.out.println("Press any other key to exit");
             flag=true;
             while(flag) {
@@ -40,7 +46,7 @@ public class Calculator {
                     choice = scanner.nextInt();
                     flag=false;
                 } catch (InputMismatchException error) {
-                    System.out.println("Enter Integer number\n" + error);
+                    System.out.println("ERROR: Enter Integer number\n" + error);
                     scanner.nextLine();
                 }
             }
@@ -54,12 +60,12 @@ public class Calculator {
                         try {
                             num1 = scanner.nextDouble();
                             if(num1<0) {
-                                System.out.println("Square root of negative number is not real number(i.e. complex number)!");
+                                System.out.println("ERROR: Square root of negative number is not real number(i.e. complex number)!");
                                 continue;
                             }
                             flag=false;
                         } catch (InputMismatchException error) {
-                            System.out.println("Enter Double number.\n" + error);
+                            System.out.println("ERROR: "+ error +" .Enter Double number.");
                             scanner.nextLine(); // to flush input stream
                         }
                     }
@@ -73,16 +79,35 @@ public class Calculator {
                         try {
                             n1 = scanner.nextInt();
                             if(n1<0) {
-                                System.out.println("Factorial of negative number is not possible!");
+                                System.out.println("ERROR: Factorial of negative number is not possible!");
                                 continue;
                             }
                             flag=false;
                         } catch (InputMismatchException error) {
-                            System.out.println("Enter Integer number.\n" + error);
+                            System.out.println("ERROR: "+ error +". Enter Integer number.");
                             scanner.nextLine(); // to flush input stream
                         }
                     }
                     System.out.println("Factorial of " + n1 + " : " + calculator.factorial(n1));
+                    break;
+                case 3:  // For Natural Logarithm
+                    System.out.println("Natural Logarithm Operation:");
+                    flag=true;
+                    while(flag){
+                        System.out.print("Enter the number: ");
+                        try {
+                            num1 = scanner.nextDouble();
+                            if (num1 < 0) {
+                                System.out.println("ERROR: Cannot find log of negative numbers");
+                                continue;
+                            }
+                            flag=false;
+                        }catch (InputMismatchException error) {
+                            System.out.println("ERROR: "+ error +". Enter Double number.");
+                            scanner.nextLine(); // to flush input stream
+                        }
+                    }
+                    System.out.println("Natural Logarithm of " + num1 + " : " + calculator.logarithm(num1));
                     break;
                 default:
                     System.out.println("Exiting...");

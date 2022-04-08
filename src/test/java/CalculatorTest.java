@@ -31,5 +31,17 @@ public class CalculatorTest {
         assertNotEquals("Testing for False Positives for factorial", 120, c.factorial(6), delta);
     }
 
+    @Test
+    public void logarithmPositive() {
+        assertEquals("Testing True Positive for logarithm", 2.302585092994046, c.logarithm(10.0), delta);
+        assertEquals("Testing for True Negative for logarithm", 1.0, c.logarithm(0), delta);
+    }
+
+    @Test
+    public void logarithmNegative() {
+        assertNotEquals("Testing False Negative for logarithm", 6.0, c.logarithm(24.0), delta);
+        assertNotEquals("Testing for False Positives for logarithm", 2.0, c.logarithm(0), delta);
+    }
+
 
 }
