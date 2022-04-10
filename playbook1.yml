@@ -1,9 +1,8 @@
 ---
-- name: Deploy a jar file
-  hosts: ubuntu18
-  remote_user: bhargav
+- name: Pull docker image of Calculator
+  hosts: all
   tasks:
-    - name: Copy jar file to home directory
-      copy:
-        src: ./target/ScientificCalculatorWithDevOps-1.0-SNAPSHOT.jar
-        dest: ~/
+    - name: Pull image
+      docker_image:
+        name: bhargav029/scientific_calculator_with_devops
+        source: pull
