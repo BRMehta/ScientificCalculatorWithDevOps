@@ -25,6 +25,12 @@ public class Calculator {
         logger.info("Calculating Natural Logarithm of : " + var + "\n Result : " + Math.log(var));
         return Math.log(var);
     }
+    public double power(double number1, double number2) {
+        logger.info("[POWER - " + number1 + " RAISED TO] " + number2);
+        double result = Math.pow(number1,number2);
+        logger.info("[RESULT - POWER] - " + result);
+        return result;
+    }
     public static void main(String[] args){
         Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
@@ -108,6 +114,15 @@ public class Calculator {
                         }
                     }
                     System.out.println("Natural Logarithm of " + num1 + " : " + calculator.logarithm(num1));
+                    break;
+                case 4:
+                    // find power
+                    System.out.print("Enter the first number : ");
+                    num1 = scanner.nextDouble();
+                    System.out.print("Enter the second number : ");
+                    num2 = scanner.nextDouble();
+                    System.out.println(num1+ " raised to power "+num2+" is : " + calculator.power(num1, num2));
+                    System.out.println("\n");
                     break;
                 default:
                     System.out.println("Exiting...");

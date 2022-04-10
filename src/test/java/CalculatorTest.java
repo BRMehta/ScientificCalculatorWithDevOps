@@ -43,5 +43,15 @@ public class CalculatorTest {
         assertNotEquals("Testing for False Positives for logarithm", 2.0, c.logarithm(1), delta);
     }
 
+    @Test
+    public void powerTruePositive(){
+        assertEquals("Finding power for True Positive", 8, c.power(2, 3), delta);
+        assertEquals("Finding power for True Positive", 64, c.power(4, 3), delta);
+    }
 
+    @Test
+    public void powerFalsePositive(){
+        assertNotEquals("Finding power for False Positive", 6, c.power(2, 2), delta);
+        assertNotEquals("Finding power for False Positive", -7.3, c.power(2, 3), delta);
+    }
 }
