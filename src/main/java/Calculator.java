@@ -10,7 +10,7 @@ import static java.lang.System.exit;
 public class Calculator {
     private static final Logger logger = LogManager.getLogger(Calculator.class);
     public double squareRoot(double var) {
-        logger.info("Calculating Square Root of : " + var + "\n Result : " + Math.sqrt(var));
+        logger.info("SQUARE_ROOT - Input:" + var + " - Output:" + Math.sqrt(var));
         return Math.sqrt(var);
     }
     public long  factorial(int var){
@@ -18,17 +18,16 @@ public class Calculator {
         for(int i = 1; i <= var; i++){
             fact *= i;
         }
-        logger.info("Factorial of the number : " + var + "\n Result is : " + fact);
+        logger.info("FACTORIAL - Input:" + var + " - Output:" + fact);
         return fact;
     }
     public double logarithm(double var){
-        logger.info("Calculating Natural Logarithm of : " + var + "\n Result : " + Math.log(var));
+        logger.info("LOGARITHM - Input:" + var + " - Output:" + Math.log(var));
         return Math.log(var);
     }
     public double power(double number1, double number2) {
-        logger.info("[POWER - " + number1 + " RAISED TO] " + number2);
         double result = Math.pow(number1,number2);
-        logger.info("[RESULT - POWER] - " + result);
+        logger.info("POWER_FUNCTION - Input:" + number1 + "^" + number2 + " - Output:"+result);
         return result;
     }
     public static void main(String[] args){
@@ -79,6 +78,7 @@ public class Calculator {
                     break;
                 case 2: // for Factorial
                     System.out.println("Factorial Operation:");
+                    logger.info("[case 2: Factorial]");
                     flag=true;
                     while(flag) {
                         System.out.print("Enter the number: ");
@@ -98,6 +98,7 @@ public class Calculator {
                     break;
                 case 3:  // For Natural Logarithm
                     System.out.println("Natural Logarithm Operation:");
+                    logger.info("[case 3: Natural Logarithm]");
                     flag=true;
                     while(flag){
                         System.out.print("Enter the number: ");
@@ -117,10 +118,28 @@ public class Calculator {
                     break;
                 case 4:
                     // find power
-                    System.out.print("Enter the first number : ");
-                    num1 = scanner.nextDouble();
-                    System.out.print("Enter the second number : ");
-                    num2 = scanner.nextDouble();
+                    flag=true;
+                    while(flag) {
+                        System.out.print("Enter the first number : ");
+                        try {
+                            num1 = scanner.nextDouble();
+                            flag = false;
+                        } catch (InputMismatchException error) {
+                            System.out.println("ERROR: " + error + ". Enter Double number.");
+                            scanner.nextLine(); // to flush input stream
+                        }
+                    }
+                    flag=true;
+                    while(flag) {
+                        System.out.print("Enter the second number : ");
+                        try {
+                            num2 = scanner.nextDouble();
+                            flag = false;
+                        } catch (InputMismatchException error) {
+                            System.out.println("ERROR: " + error + ". Enter Double number.");
+                            scanner.nextLine(); // to flush input stream
+                        }
+                    }
                     System.out.println(num1+ " raised to power "+num2+" is : " + calculator.power(num1, num2));
                     System.out.println("\n");
                     break;
