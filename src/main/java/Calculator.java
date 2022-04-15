@@ -78,7 +78,6 @@ public class Calculator {
                     break;
                 case 2: // for Factorial
                     System.out.println("Factorial Operation:");
-                    logger.info("[case 2: Factorial]");
                     flag=true;
                     while(flag) {
                         System.out.print("Enter the number: ");
@@ -98,7 +97,6 @@ public class Calculator {
                     break;
                 case 3:  // For Natural Logarithm
                     System.out.println("Natural Logarithm Operation:");
-                    logger.info("[case 3: Natural Logarithm]");
                     flag=true;
                     while(flag){
                         System.out.print("Enter the number: ");
